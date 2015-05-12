@@ -21,10 +21,10 @@ public class MainClass {
 		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
 		JLabel headlabel2=new JLabel("Cick on the Options Below:",JLabel.CENTER);
 		JLabel test=new JLabel(" ");
-		JButton addnew = new JButton("Add A Employee");
-		JButton remove = new JButton("Remove A Employee");
-		JButton update = new JButton("Update A Record");
-		JButton leave = new JButton("Leave Entry");
+		JButton addnew = new JButton("Add a Employee");
+		JButton remove = new JButton("Remove a Employee");
+		JButton update = new JButton("Update a Record");
+		JButton leave = new JButton("No. of Leave Entry");
 		
 		
 		
@@ -43,13 +43,13 @@ public class MainClass {
 		headlabel2.setSize(300,25);
 		test.setBounds(100, 100, 30, 25);
 
-		addnew.setLocation(150, 120);
+		addnew.setLocation(100, 120);
 		addnew.setSize(200, 25);
-		remove.setLocation(150, 150);
+		remove.setLocation(100, 160);
 		remove.setSize(200,25);
-		update.setLocation(150, 180);
+		update.setLocation(100, 200);
 		update.setSize(200,25);
-		leave.setLocation(150,210);
+		leave.setLocation(100,240);
 		leave.setSize(200,25);
 		
 
