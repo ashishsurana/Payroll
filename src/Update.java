@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-public class AddNew  {  
+public class Update  {  
 	public static void frame(){
 
 final JFrame f=new JFrame();//creating instance of JFrame  
@@ -15,7 +15,7 @@ final JFrame f=new JFrame();//creating instance of JFrame
  
 
 JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
-JLabel headlabel2=new JLabel("Enter the details about an Employee",JLabel.CENTER);
+JLabel headlabel2=new JLabel("Edit the info to be edited",JLabel.CENTER);
 
 JLabel namelabel=new JLabel("Full Name : ");
 JTextField nametf= new JTextField();
