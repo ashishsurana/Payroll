@@ -6,14 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
-public class MainClass {
+public class MainClass extends AddNew {
 
 	public MainClass() {
 		// TODO Auto-generated constructor stub
 	}
+	public static void frame(){
 
-	public static void main(String[] args) {
-		
 		final JFrame frame = new JFrame();
 		frame.setSize(400,500);
 			
@@ -30,18 +29,25 @@ public class MainClass {
 		
 		JButton quit = new JButton("Quit");
 
-		quit.addActionListener(new ActionListener() {
+		quit.addActionListener(new ActionListener() {//on Click Quit
 		    public void actionPerformed(ActionEvent e)
 		    {
 		       frame.dispose();
 		    }
 		});
 		
+		addnew.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				frameaddnew();
+			}
+		});
+		
 		
 		headlabel.setBounds(50,40,300,25);
 		headlabel2.setLocation(50,70);
 		headlabel2.setSize(300,25);
-		test.setBounds(100, 100, 30, 25);
+		test.setBounds(200, 200, 10, 15);
 
 		addnew.setLocation(100, 120);
 		addnew.setSize(200, 25);
@@ -64,9 +70,16 @@ public class MainClass {
 		frame.add(quit);
 		frame.add(test);
 		
+		
+		
+		
 		frame.setVisible(true);
 		frame.setLayout(null);	
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public static void main(String[] args) {
+	frame();
+	
 	}
 
 }

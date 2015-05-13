@@ -8,48 +8,54 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 public class AddNew  {  
-	public static void frame(){
+	public static void frameaddnew(){
 
-final JFrame f=new JFrame();//creating instance of JFrame  
-
- 
+final JFrame f=new JFrame(); 
 
 JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
 JLabel headlabel2=new JLabel("Enter the details about an Employee",JLabel.CENTER);
 
 JLabel namelabel=new JLabel("Full Name : ");
-JTextField nametf= new JTextField();
+final JTextField nametf= new JTextField();
 
 JLabel agelabel=new JLabel("Age :");
-JTextField agetf= new JTextField();
+final JTextField agetf= new JTextField();
 
-JLabel sexlabel=new JLabel("Sex :");
+JLabel sexlabel=new JLabel("Sex :");//Radio Button
 JRadioButton male=new JRadioButton("Male");
 JRadioButton female=new JRadioButton("Female");
 JRadioButton other=new JRadioButton("Other");
-male.setSelected(true);
-
-ButtonGroup bg = new ButtonGroup();
+//male.setSelected(true);
+final ButtonGroup bg = new ButtonGroup();//Button Group
 bg.add(male);
 bg.add(female);
 bg.add(other);
 
-
 JLabel designationlabel=new JLabel("Designation :");
-JTextField designationtf= new JTextField();
+final JTextField designationtf= new JTextField();
 
 JLabel basiclabel=new JLabel("Basic :");
-JTextField basictf= new JTextField();
+final JTextField basictf= new JTextField();
 
 JLabel uidlabel=new JLabel("Unique ID :");
-JTextField uidtf= new JTextField();
-
+final JTextField uidtf= new JTextField();
 
 JButton submit = new JButton("Submit");
-JButton quit = new JButton("Quit");
-JButton cancel = new JButton("Cancel");
+JButton quit = new JButton("Cancel");
+JButton clear = new JButton("Clear");
+clear.addActionListener(new ActionListener(){//On cancel click
+	public void actionPerformed(ActionEvent e)
+	{
+		
+		nametf.setText("");
+		agetf.setText("");
+		designationtf.setText("");
+		basictf.setText("");
+		bg.clearSelection();
+	}
+});
 
-quit.addActionListener(new ActionListener() {
+quit.addActionListener(new ActionListener() {//On Quit click
     public void actionPerformed(ActionEvent e)
     {
        f.dispose();
@@ -80,7 +86,7 @@ basictf.setBounds(200,280,150,25);
 
 submit.setBounds(40,400,100,25);
 quit.setBounds(150,400,100,25);
-cancel.setBounds(260,400,100,25);
+clear.setBounds(260,400,100,25);
 
 uidtf.setBounds(200,310,150,25);
 
@@ -120,7 +126,7 @@ f.add(basiclabel);
 f.add(basictf);
 f.add(submit);          
 f.add(quit);
-f.add(cancel);
+f.add(clear);
 f.add(uidlabel);
 f.add(uidtf);
 f.addWindowListener(null);
@@ -132,6 +138,6 @@ f.setVisible(true);//making the frame visible
 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 public static void main(String[] args) {  
-	frame();
+//	frameaddnew();
 }  
 }  
