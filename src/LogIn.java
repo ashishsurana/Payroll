@@ -6,28 +6,37 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
-public class Remove {
 
-	public Remove() {
-
-	}
-	public static void frameremove(){
-final JFrame frame=new JFrame();
+public class LogIn {
+	public static void loginframe(){
+		String uid;
+		String password;
 		
+		Connection con;
+		Statement stmt;
+		String query;
+
+		final JFrame frame = new JFrame();
 		frame.setSize(400,500);
 			
 
 		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
-		JLabel headlabel2=new JLabel("Remove A Employee From Paroll",JLabel.CENTER);
+		JLabel headlabel2=new JLabel("Welcome Admin to Admin Panel",JLabel.CENTER);
 		
-		JLabel uidlabel=new JLabel("Enter the UID :");
+		JLabel uidlabel=new JLabel("Admin username :");
 		JTextField uidtf = new JTextField();
+		uid=uidtf.getText();
 		
-		JButton remove = new JButton("Remove");		
+		JLabel leaves=new JLabel("Admin Password :");
+		JTextField passwordtf = new JTextField();
+		
+		JButton remove = new JButton("Log In");		
 		
 		
-		JButton quit = new JButton("Cancel");
+		JButton quit = new JButton("Quit");
 		JLabel test=new JLabel(" ");
 
 		quit.addActionListener(new ActionListener() {
@@ -45,6 +54,8 @@ final JFrame frame=new JFrame();
 		remove.setSize(200,25);
 		uidlabel.setBounds(50, 150, 150, 25);
 		uidtf.setBounds(210, 150, 150, 25);
+		leaves.setBounds(50, 180, 150, 25);
+		passwordtf.setBounds(210, 180, 150, 25);
 		test.setBounds(50, 150, 50, 25);
 		
 
@@ -56,13 +67,17 @@ final JFrame frame=new JFrame();
 		frame.add(quit);
 		frame.add(uidlabel);
 		frame.add(uidtf);
+		frame.add(leaves);
+		frame.add(passwordtf);
 		frame.add(test);
 		
 		
 		frame.setVisible(true);
 		frame.setLayout(null);	
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 	public static void main(String[] args){
+		
 	}
 }

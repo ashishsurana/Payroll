@@ -7,27 +7,31 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class Remove {
+public class AddLeaves {
 
-	public Remove() {
-
-	}
-	public static void frameremove(){
-final JFrame frame=new JFrame();
+	public static void frameleave(){
 		
+		
+		
+		
+
+		final JFrame frame = new JFrame();
 		frame.setSize(400,500);
 			
 
 		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
-		JLabel headlabel2=new JLabel("Remove A Employee From Paroll",JLabel.CENTER);
+		JLabel headlabel2=new JLabel("Enter the Leaves for a Employee",JLabel.CENTER);
 		
 		JLabel uidlabel=new JLabel("Enter the UID :");
 		JTextField uidtf = new JTextField();
 		
-		JButton remove = new JButton("Remove");		
+		JLabel leaves=new JLabel("Enter the no. of leaves");
+		JTextField leavestf = new JTextField();
+		
+		JButton remove = new JButton("Insert");		
 		
 		
-		JButton quit = new JButton("Cancel");
+		JButton quit = new JButton("Quit");
 		JLabel test=new JLabel(" ");
 
 		quit.addActionListener(new ActionListener() {
@@ -45,6 +49,8 @@ final JFrame frame=new JFrame();
 		remove.setSize(200,25);
 		uidlabel.setBounds(50, 150, 150, 25);
 		uidtf.setBounds(210, 150, 150, 25);
+		leaves.setBounds(50, 180, 150, 25);
+		leavestf.setBounds(210, 180, 150, 25);
 		test.setBounds(50, 150, 50, 25);
 		
 
@@ -56,13 +62,25 @@ final JFrame frame=new JFrame();
 		frame.add(quit);
 		frame.add(uidlabel);
 		frame.add(uidtf);
+		frame.add(leaves);
+		frame.add(leavestf);
 		frame.add(test);
 		
 		
 		frame.setVisible(true);
 		frame.setLayout(null);	
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		
+		
+		
+		
+		
+		
 	}
-	public static void main(String[] args){
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
+
 }

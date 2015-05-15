@@ -7,15 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-public class Update  {  
-	public static void frame(){
+public class Update  {  public static void frameupdate(){
 
 final JFrame f=new JFrame();//creating instance of JFrame  
 
  
 
 JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
-JLabel headlabel2=new JLabel("Edit the info to be edited",JLabel.CENTER);
+JLabel headlabel2=new JLabel("Edit the info to be Updated",JLabel.CENTER);
 
 JLabel namelabel=new JLabel("Full Name : ");
 JTextField nametf= new JTextField();
@@ -47,7 +46,7 @@ JTextField uidtf= new JTextField();
 
 JButton submit = new JButton("Submit");
 JButton quit = new JButton("Quit");
-JButton cancel = new JButton("Cancel");
+
 
 quit.addActionListener(new ActionListener() {
     public void actionPerformed(ActionEvent e)
@@ -78,9 +77,9 @@ agetf.setBounds(200,150,150, 25);
 designationtf.setBounds(200,250,150,25);
 basictf.setBounds(200,280,150,25);
 
-submit.setBounds(40,400,100,25);
-quit.setBounds(150,400,100,25);
-cancel.setBounds(260,400,100,25);
+submit.setBounds(100,400,90,25);
+quit.setBounds(210,400,90,25);
+
 
 uidtf.setBounds(200,310,150,25);
 
@@ -120,7 +119,7 @@ f.add(basiclabel);
 f.add(basictf);
 f.add(submit);          
 f.add(quit);
-f.add(cancel);
+
 f.add(uidlabel);
 f.add(uidtf);
 f.addWindowListener(null);
@@ -132,7 +131,7 @@ f.setVisible(true);//making the frame visible
 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 public static void main(String[] args) {  
-	frame();
+	
 }  
 }  
 
