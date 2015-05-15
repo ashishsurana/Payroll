@@ -267,8 +267,8 @@ agetf.setBounds(200,150,150, 25);
 designationtf.setBounds(200,250,150,25);
 basictf.setBounds(200,280,150,25);
 
-submit.setBounds(40,400,100,25);
-quit.setBounds(150,400,100,25);
+submit.setBounds(100,400,90,25);
+quit.setBounds(210,400,90,25);
 
 
 uidtf.setBounds(200,310,150,25);
@@ -340,7 +340,7 @@ f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		JLabel leaves=new JLabel("Enter the no. of leaves");
 		JTextField leavestf = new JTextField();
 		
-		JButton remove = new JButton("Remove");		
+		JButton remove = new JButton("Insert");		
 		
 		
 		JButton quit = new JButton("Quit");
@@ -390,6 +390,7 @@ f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
 	}
+	
 	public static void framedisplay(){
 
 	final JFrame f=new JFrame();//creating instance of JFrame  
@@ -419,8 +420,8 @@ f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
 
-	JButton quit = new JButton("Quit");
-	JButton cancel = new JButton("OK");
+	JButton quit = new JButton("ok");
+
 
 	quit.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e)
@@ -452,8 +453,8 @@ f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	uidtf.setBounds(200,270,150,25);
 
 
-	cancel.setBounds(100,400,80,25);
-	quit.setBounds(240,400,80,25);
+
+	quit.setBounds(150,400,100,25);
 
 
 
@@ -488,7 +489,7 @@ f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	f.add(basictf);
 	         
 	f.add(quit);
-	f.add(cancel);
+
 	f.add(uidlabel);
 	f.add(uidtf);
 	f.addWindowListener(null);
@@ -499,6 +500,7 @@ f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		}
+	
 	public static void frame(){
 
 		final JFrame frame=new JFrame();
@@ -592,7 +594,70 @@ f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setLayout(null);	
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login();
 	}
+	
+	public static void login(){
+
+
+		final JFrame frame = new JFrame();
+		frame.setSize(400,500);
+			
+
+		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
+		JLabel headlabel2=new JLabel("Welcome Admin to Admin Panel",JLabel.CENTER);
+		
+		JLabel uidlabel=new JLabel("Admin username :");
+		JTextField uidtf = new JTextField();
+		
+		JLabel leaves=new JLabel("Admin Password :");
+		JTextField leavestf = new JTextField();
+		
+		JButton remove = new JButton("Log In");		
+		
+		
+		JButton quit = new JButton("Quit");
+		JLabel test=new JLabel(" ");
+
+		quit.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e)
+		    {
+		       frame.dispose();
+		    }
+		});
+		
+		
+		headlabel.setBounds(50,40,300,25);
+		headlabel2.setLocation(50,70);
+		headlabel2.setSize(300,25);
+		remove.setLocation(100, 250);
+		remove.setSize(200,25);
+		uidlabel.setBounds(50, 150, 150, 25);
+		uidtf.setBounds(210, 150, 150, 25);
+		leaves.setBounds(50, 180, 150, 25);
+		leavestf.setBounds(210, 180, 150, 25);
+		test.setBounds(50, 150, 50, 25);
+		
+
+		quit.setBounds(150,400,100,25);
+		
+		frame.add(headlabel);
+		frame.add(headlabel2);
+		frame.add(remove);
+		frame.add(quit);
+		frame.add(uidlabel);
+		frame.add(uidtf);
+		frame.add(leaves);
+		frame.add(leavestf);
+		frame.add(test);
+		
+		
+		frame.setVisible(true);
+		frame.setLayout(null);	
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+	
 	public static void main(String[] args) {
 	frame();
 	
