@@ -15,16 +15,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class LogIn {
+public class AdminLogIn {
 	public static String uidinput;
 	public static String passwordinput;
 	public static void loginframe(){
 		
 	
-		
-		
-		
-		
+
 		
 		//Frame Block
 		final JFrame frame = new JFrame();
@@ -80,6 +77,9 @@ public class LogIn {
 							else
 							{
 								JOptionPane.showMessageDialog(null, "Incorrect id/password");
+								passwordtf.setText("");
+								uidtf.setText("");
+								
 							}
 						}
 						else

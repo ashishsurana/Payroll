@@ -107,14 +107,14 @@ public static void frame(){
 		frame.setVisible(true);
 		frame.setLayout(null);	
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        LogIn.loginframe();
+//        LogIn.loginframe();
 	}
 	
 	
 	
 	public static void main(String[] args) {
 //	loginframe();
-		frame();
+		AdminLogIn.loginframe();
 	
 	}
 

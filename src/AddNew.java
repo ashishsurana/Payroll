@@ -1,13 +1,29 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import java.sql.Statement;
 public class AddNew  {  
+	 static String nameip;
+	 static int ageip;
+	 static String sexip;
+	 static String designationip;
+	 static int basicip;
+	 static String uidip;
+	
+	
 	public static void frameaddnew(){
 
 		final JFrame f=new JFrame(); 
@@ -53,6 +69,48 @@ public class AddNew  {
 				basictf.setText("");
 				bg.clearSelection();
 			}
+		});
+
+		submit.addActionListener(new ActionListener() {//On Quit click
+		    public void actionPerformed(ActionEvent e)
+		    {
+		    	//Getting input from UI
+		    	nameip=nametf.getText();
+		    	ageip=100;//agetf.getText();
+		    	sexip="T";
+		    	designationip=designationtf.getText();
+		    	basicip=500;//basictf.getInt();
+		    	uidip=uidtf.getText();
+		    	
+		    	//Database Connectivity
+		       Connection con;
+		       Statement stmt;
+		       PreparedStatement ps;
+		       ResultSet rs;
+		       String query="INSERT INTO employee   (name,age,sex,designation,basic,uid)" + "VALUES (?,?,?,?,?,?)";
+		       
+		       String url="jdbc:mysql://localhost:3306/payrolltest";
+		       String username="test3";
+		       String password="pwd";
+		       
+		       try{
+		    	   con=DriverManager.getConnection(url,username,password);
+//		    	   stmt=con.createStatement();
+//		    	   rs=stmt.executeQuery(query);
+		    	   ps=con.prepareStatement(query);
+		    	   ps.setString(1, nameip);
+		    	   ps.setInt(2, ageip);
+		    	   ps.setString(3,sexip);
+		    	   ps.setString(4, designationip);
+		    	   ps.setInt(5,basicip);
+		    	   ps.setString(6, uidip);
+		    	   ps.executeUpdate();
+			       JOptionPane.showConfirmDialog(null, "Done");
+		       }
+		       catch(SQLException e2){
+		    	   System.err.println(e2.getMessage());
+		       }
+		    }
 		});
 
 		quit.addActionListener(new ActionListener() {//On Quit click
@@ -138,6 +196,7 @@ public class AddNew  {
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 public static void main(String[] args) {  
+	frameaddnew();
 
 }  
 }  
