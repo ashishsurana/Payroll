@@ -1,24 +1,32 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.DriverManager;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class LogIn {
+	public static String uidinput;
+	public static String passwordinput;
 	public static void loginframe(){
-		String uid;
-		String password;
 		
-		Connection con;
-		Statement stmt;
-		String query;
-
+	
+		
+		
+		
+		
+		
+		//Frame Block
 		final JFrame frame = new JFrame();
 		frame.setSize(400,500);
 			
@@ -27,18 +35,78 @@ public class LogIn {
 		JLabel headlabel2=new JLabel("Welcome Admin to Admin Panel",JLabel.CENTER);
 		
 		JLabel uidlabel=new JLabel("Admin username :");
-		JTextField uidtf = new JTextField();
-		uid=uidtf.getText();
+		final JTextField uidtf = new JTextField();
+		uidinput=uidtf.getText();
+
+		JLabel passwordlabel=new JLabel("Admin Password :");
+		final JPasswordField passwordtf = new JPasswordField();
 		
-		JLabel leaves=new JLabel("Admin Password :");
-		JTextField passwordtf = new JTextField();
 		
-		JButton remove = new JButton("Log In");		
+		JButton loginbutton = new JButton("Log In ");		
 		
 		
 		JButton quit = new JButton("Quit");
 		JLabel test=new JLabel(" ");
 
+		loginbutton.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e)
+		    {
+		    	Connection con;
+				Statement stmt;
+				ResultSet rs;
+				String query="select * from login ";
+
+				String url = "jdbc:mysql://localhost:3306/payrolltest";
+			    String user = "test3";
+			    String passwd = "pwd";
+			    
+			    
+				//Database Connection Block
+				try{
+					con=DriverManager.getConnection(url, user, passwd);
+					stmt=con.createStatement();
+					rs=stmt.executeQuery(query);
+					if(rs.next()){
+//						uidinput=rs.getString(1);
+//						passwordinput=rs.getString(2);
+//						JOptionPane.showMessageDialog(null, passwordinput);
+						passwordinput = new String(passwordtf.getPassword());
+						uidinput=new String(uidtf.getText());
+						if(uidinput.equals(rs.getString(1)))	
+						{
+							if(passwordinput.equals(rs.getString(2))){
+								MainClass.frame();
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Incorrect id/password");
+							}
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Incorrect id/password");
+						}
+					}
+					else{
+						JOptionPane.showInputDialog("InCorret");
+					}
+					
+				}
+				catch(SQLException e2){
+					System.err.println(e2.getMessage());
+				}
+		    }
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		quit.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e)
 		    {
@@ -50,11 +118,11 @@ public class LogIn {
 		headlabel.setBounds(50,40,300,25);
 		headlabel2.setLocation(50,70);
 		headlabel2.setSize(300,25);
-		remove.setLocation(100, 250);
-		remove.setSize(200,25);
+		loginbutton.setLocation(100, 250);
+		loginbutton.setSize(200,25);
 		uidlabel.setBounds(50, 150, 150, 25);
 		uidtf.setBounds(210, 150, 150, 25);
-		leaves.setBounds(50, 180, 150, 25);
+		passwordlabel.setBounds(50, 180, 150, 25);
 		passwordtf.setBounds(210, 180, 150, 25);
 		test.setBounds(50, 150, 50, 25);
 		
@@ -63,11 +131,11 @@ public class LogIn {
 		
 		frame.add(headlabel);
 		frame.add(headlabel2);
-		frame.add(remove);
+		frame.add(loginbutton);
 		frame.add(quit);
 		frame.add(uidlabel);
 		frame.add(uidtf);
-		frame.add(leaves);
+		frame.add(passwordlabel);
 		frame.add(passwordtf);
 		frame.add(test);
 		
@@ -78,6 +146,6 @@ public class LogIn {
 
 	}
 	public static void main(String[] args){
-		
+		loginframe();
 	}
 }
