@@ -102,7 +102,7 @@ public class AddNew  {
 		       Connection con;
 		       Statement stmt;
 		       PreparedStatement ps;
-		       ResultSet rs;
+//		       ResultSet rs;
 		       String query="INSERT INTO employee (name,age,sex,designation,basic,uid)" + "VALUES (?,?,?,?,?,?)";
 		       
 		       String url="jdbc:mysql://localhost:3306/payrolltest";
