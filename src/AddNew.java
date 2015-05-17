@@ -1,11 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,10 +19,10 @@ import javax.swing.JTextField;
 import java.sql.Statement;
 public class AddNew  {  
 	 static String nameip;
-	 static int ageip;
-	 static String sexip;
+	 static int ageip=0;
+	 static String sexip="T";
 	 static String designationip;
-	 static int basicip;
+	 static int basicip=0;
 	 static String uidip;
 	
 	
@@ -38,9 +40,9 @@ public class AddNew  {
 		final JTextField agetf= new JTextField();
 
 		JLabel sexlabel=new JLabel("Sex :");//Radio Button
-		JRadioButton male=new JRadioButton("Male");
-		JRadioButton female=new JRadioButton("Female");
-		JRadioButton other=new JRadioButton("Other");
+		final JRadioButton male=new JRadioButton("Male");
+		final JRadioButton female=new JRadioButton("Female");
+		final JRadioButton other=new JRadioButton("Other");
 		//male.setSelected(true);
 		final ButtonGroup bg = new ButtonGroup();//Button Group
 		bg.add(male);
@@ -50,7 +52,7 @@ public class AddNew  {
 		JLabel designationlabel=new JLabel("Designation :");
 		final JTextField designationtf= new JTextField();
 
-		JLabel basiclabel=new JLabel("Basic :");
+		JLabel basiclabel=new JLabel("Basic Salary :");
 		final JTextField basictf= new JTextField();
 
 		JLabel uidlabel=new JLabel("Unique ID :");
@@ -75,19 +77,33 @@ public class AddNew  {
 		    public void actionPerformed(ActionEvent e)
 		    {
 		    	//Getting input from UI
-		    	nameip=nametf.getText();
-		    	ageip=100;//agetf.getText();
-		    	sexip="T";
-		    	designationip=designationtf.getText();
-		    	basicip=500;//basictf.getInt();
-		    	uidip=uidtf.getText();
-		    	
+		    	try{
+		    		nameip=nametf.getText();
+			    	ageip=Integer.parseInt(agetf.getText());
+			    	if(male.isSelected()==true){
+			    		sexip="M";
+			    	}
+			    	else if(female.isSelected()==true){
+			    		sexip="F";
+			    	}
+			    	else
+			    		sexip="O";
+			    	
+			    	designationip=designationtf.getText();
+			    	basicip=Integer.parseInt(basictf.getText());
+			    	uidip=uidtf.getText();
+			    	
+		    	}
+		    	catch(NumberFormatException e2){
+		    		e2.getMessage();
+		    		//JOptionPane.showMessageDialog(null,"Invalid Input");
+		    	}
 		    	//Database Connectivity
 		       Connection con;
 		       Statement stmt;
 		       PreparedStatement ps;
 		       ResultSet rs;
-		       String query="INSERT INTO employee   (name,age,sex,designation,basic,uid)" + "VALUES (?,?,?,?,?,?)";
+		       String query="INSERT INTO employee (name,age,sex,designation,basic,uid)" + "VALUES (?,?,?,?,?,?)";
 		       
 		       String url="jdbc:mysql://localhost:3306/payrolltest";
 		       String username="test3";
@@ -104,9 +120,17 @@ public class AddNew  {
 		    	   ps.setString(4, designationip);
 		    	   ps.setInt(5,basicip);
 		    	   ps.setString(6, uidip);
-		    	   ps.executeUpdate();
-			       JOptionPane.showConfirmDialog(null, "Done");
-		       }
+		    	   if(nameip.equals("") ||  ageip==0 || sexip=="T" || designationip.equals("") || basicip==0 || uidip.equals(""))
+		    		   
+		    	   {
+		    		   JOptionPane.showMessageDialog(null,"Check All Fields must be Filled with correct values");
+		    	    }
+		    	   else{
+		    		   ps.executeUpdate();
+			    	   JOptionPane.showMessageDialog(null, "Response Submitted Successfully");
+			    	  
+		    	   }
+		    	   }
 		       catch(SQLException e2){
 		    	   System.err.println(e2.getMessage());
 		       }
