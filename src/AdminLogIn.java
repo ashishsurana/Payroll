@@ -25,6 +25,7 @@ public class AdminLogIn {
 		
 		//Frame Block
 		final JFrame frame = new JFrame();
+		
 		frame.setSize(400,500);
 			
 

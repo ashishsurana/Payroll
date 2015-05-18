@@ -1,16 +1,31 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 public class Display  {  
+	static Connection con;
+	static Statement stmt;
+	static ResultSet rs;
+	static String url="jdbc:mysql://localhost:3306/payrolltest";
+	static String username="test3";
+	static String password="pwd";
+	static String query;
+	
 	public static void framedisplay(){
 
 	final JFrame f=new JFrame();//creating instance of JFrame  
-
-	 
+	String uidin=JOptionPane.showInputDialog("Enter uid");
+	query="select * from employee where uid =  '"+ uidin +"' ";
+	
 
 	JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
 	JLabel headlabel2=new JLabel("Details of an Employee",JLabel.CENTER);
@@ -33,10 +48,40 @@ public class Display  {
 	JLabel uidlabel=new JLabel("Unique ID :");
 	JTextField uidtf= new JTextField();
 
-
-
 	JButton quit = new JButton("ok");
 
+	try{
+		con=DriverManager.getConnection(url,username,password);
+		stmt=con.createStatement( ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		rs=stmt.executeQuery(query);
+		while(rs.next())
+		{
+
+			nametf.setText(rs.getString("name"));
+			agetf.setText(rs.getString("age"));
+			designationtf.setText(rs.getString("designation"));
+			uidtf.setText(rs.getString("uid"));
+			basictf.setText(rs.getString("basic"));
+			if(rs.getString("sex").equals("M")){
+	    		
+				sextf.setText("Male");
+	    	}
+	    	else if(rs.getString("sex").equals("F") ){
+	    		sextf.setText("Female");
+	    	}
+	    	else
+	    		sextf.setText("Other");
+		}
+		
+		
+	}
+	catch(SQLException e2){
+		System.out.println(e2.getMessage());
+	}
+	
+	
+	
+	
 
 	quit.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e)
@@ -116,6 +161,6 @@ public class Display  {
 	f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		}
 public static void main(String[] args) {  
-	
+	framedisplay();
 }  
 }  

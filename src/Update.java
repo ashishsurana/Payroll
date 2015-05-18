@@ -1,32 +1,54 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-public class Update  {  public static void frameupdate(){
-
-final JFrame f=new JFrame();//creating instance of JFrame  
-
+public class Update  { 
+	static Connection con;
+	static Statement stmt;
+	static ResultSet  rs;
+	static String query;
+	
+	static String url="jdbc:mysql://localhost:3306/payrolltest";
+	static String username="test3";
+	static String password="pwd";
+	public static void frameupdate(){//String passeduid
+		final String passeduid=JOptionPane.showInputDialog("Enter uid for updation");
+		
+		query="select * from employee where uid =  '"+ passeduid +"' ";
+		final JFrame f=new JFrame();//creating instance of JFrame  
+		//uidin=JOptionPane.showInputDialog("Enter uid");
+		if(passeduid.equals("")){
+			f.dispose();
+		}
+		
  
 
-JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
-JLabel headlabel2=new JLabel("Edit the info to be Updated",JLabel.CENTER);
+		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
+		JLabel headlabel2=new JLabel("Edit the info to be Updated",JLabel.CENTER);
 
-JLabel namelabel=new JLabel("Full Name : ");
-JTextField nametf= new JTextField();
+		JLabel namelabel=new JLabel("Full Name : ");
+		final JTextField nametf= new JTextField();
+		
+		JLabel agelabel=new JLabel("Age :");
+		final JTextField agetf= new JTextField();
 
-JLabel agelabel=new JLabel("Age :");
-JTextField agetf= new JTextField();
-
-JLabel sexlabel=new JLabel("Sex :");
-JRadioButton male=new JRadioButton("Male");
-JRadioButton female=new JRadioButton("Female");
-JRadioButton other=new JRadioButton("Other");
-male.setSelected(true);
+		JLabel sexlabel=new JLabel("Sex :");
+		final JRadioButton male=new JRadioButton("Male");
+		final JRadioButton female=new JRadioButton("Female");
+		final JRadioButton other=new JRadioButton("Other");
+//male.setSelected(true);
 
 ButtonGroup bg = new ButtonGroup();
 bg.add(male);
@@ -35,17 +57,109 @@ bg.add(other);
 
 
 JLabel designationlabel=new JLabel("Designation :");
-JTextField designationtf= new JTextField();
+final JTextField designationtf= new JTextField();
 
 JLabel basiclabel=new JLabel("Basic :");
-JTextField basictf= new JTextField();
+final JTextField basictf= new JTextField();
 
 JLabel uidlabel=new JLabel("Unique ID :");
-JTextField uidtf= new JTextField();
+final JTextField uidtf= new JTextField();
 
 
-JButton submit = new JButton("Submit");
+JButton submit = new JButton("Update");
 JButton quit = new JButton("Quit");
+
+try{
+	con=DriverManager.getConnection(url,username,password);
+	stmt=con.createStatement( ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+	rs=stmt.executeQuery(query);
+	while(rs.next())
+	{
+
+		nametf.setText(rs.getString("name"));
+		agetf.setText(rs.getString("age"));
+		designationtf.setText(rs.getString("designation"));
+		uidtf.setText(rs.getString("uid"));
+		basictf.setText(rs.getString("basic"));
+		if(rs.getString("sex").equals("M")){
+    		
+			male.setSelected(true);
+    	}
+    	else if(rs.getString("sex").equals("F") ){
+    		female.setSelected(true);
+    	}
+    	else
+    		other.setSelected(true);;
+	}
+	
+	
+}
+catch(SQLException e2){
+	System.out.println(e2.getMessage());
+}
+
+submit.addActionListener(new ActionListener(){
+	public void actionPerformed(ActionEvent e)
+	{
+//		Connection con;
+//		Statement stmt;
+//		ResultSet  rs;
+//		String query="selecyt * from employee where uid = " + passeduid;
+//		
+//		String url="jdbc:mysql//localhost:3306/payrolltest";
+//		String username="test3";
+//		String password="pwd";
+		
+		try{
+			String temp;
+//			con.setReadOnly(false);
+			con.close();
+			query="UPDATE employee SET name=?, age = ?,sex= ?,designation= ?,basic = ?,uid = ? " +" WHERE uid = '"+passeduid+"'";//(name,age,sex,designation,basic,uid)
+			con=DriverManager.getConnection(url,username,password);
+			stmt=con.createStatement();//ResultSet.CONCUR_UPDATABLE, ResultSet.TYPE_SCROLL_SENSITIVE
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setString(1, nametf.getText());
+			ps.setInt(2, Integer.parseInt(agetf.getText()));
+			if(male.isSelected()==true){
+    		temp="M";
+    	}
+    	else if(female.isSelected()==true){
+    		temp="F";
+    	}
+    	else
+    	{
+    		temp="O";
+    	}
+			ps.setString(3, temp);
+			ps.setString(4, designationtf.getText());
+			ps.setString(5, basictf.getText());
+			ps.setString(6, uidtf.getText());
+//			rs.updateRow();
+			if(nametf.getText().equals("") ||  Integer.parseInt(agetf.getText())==0  || designationtf.getText().equals("") || basictf.getText().equals("") || uidtf.getText().equals(""))
+	    		   
+	    	   {
+	    		   JOptionPane.showMessageDialog(null,"Check All Fields must be Filled with correct values");
+	    	    }
+	    	   else{
+	    		   ps.executeUpdate();
+		    	   JOptionPane.showMessageDialog(null, "Response Submitted Successfully");
+		    	  
+	    	   }
+			
+		}
+		catch(SQLException e2){
+			System.out.println(e2.getMessage());
+		}
+	}
+});
+try {
+	rs.updateRow();
+	JOptionPane.showMessageDialog(null,"ok");
+} catch (SQLException e1) {
+	// TODO Auto-generated catch block
+//	e1.printStackTrace();
+}
+
 
 
 quit.addActionListener(new ActionListener() {
@@ -130,8 +244,9 @@ f.setVisible(true);//making the frame visible
 
 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
-public static void main(String[] args) {  
-	
-}  
+ public static void main(String[] args)
+ {
+	 frameupdate();
+ }
 }  
 

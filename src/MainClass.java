@@ -1,15 +1,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import java.sql.Connection;
+import java.sql.Statement;
 
 
 public class MainClass {
@@ -113,8 +109,8 @@ public static void frame(){
 	
 	
 	public static void main(String[] args) {
-//	loginframe();
-		AdminLogIn.loginframe();
+		frame();
+//		AdminLogIn.loginframe();
 	
 	}
 
