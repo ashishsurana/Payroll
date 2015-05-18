@@ -1,10 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -12,7 +10,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -103,7 +100,7 @@ public class AddNew  {
 		       Statement stmt;
 		       PreparedStatement ps;
 //		       ResultSet rs;
-		       String query="INSERT INTO employee (name,age,sex,designation,basic,uid)" + "VALUES (?,?,?,?,?,?)";
+		       String query="INSERT INTO employee  (name,age,sex,designation,basic,uid) VALUES (upper (?),?,?,upper(?),?,upper(?))";
 		       
 		       String url="jdbc:mysql://localhost:3306/payrolltest";
 		       String username="test3";
@@ -134,6 +131,10 @@ public class AddNew  {
 		       catch(SQLException e2){
 		    	   System.err.println(e2.getMessage());
 		       }
+//		       finally{
+//		    	   con.close();
+//		    	   ps.close();
+//		       }
 		    }
 		});
 

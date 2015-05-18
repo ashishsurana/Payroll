@@ -77,7 +77,7 @@ public class AdminLogIn {
 							}
 							else
 							{
-								JOptionPane.showMessageDialog(null, "Incorrect id/password");
+								JOptionPane.showMessageDialog(null, "Invalid id/password");
 								passwordtf.setText("");
 								uidtf.setText("");
 								
