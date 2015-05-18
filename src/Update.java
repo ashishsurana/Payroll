@@ -66,6 +66,16 @@ final JTextField basictf= new JTextField();
 JLabel uidlabel=new JLabel("Unique ID :");
 final JTextField uidtf= new JTextField();
 
+JLabel Nolabel=new JLabel("Mobile Number  :");
+final JTextField NOtf= new JTextField();
+
+JLabel emaillabel=new JLabel("Emails ID :");
+final JTextField emailtf= new JTextField();
+
+JLabel passlabel=new JLabel("User Password :");
+final JTextField passtf= new JTextField();
+
+
 
 JButton submit = new JButton("Update");
 JButton quit = new JButton("Quit");
@@ -82,6 +92,9 @@ try{
 		designationtf.setText(rs.getString("designation"));
 		uidtf.setText(rs.getString("uid"));
 		basictf.setText(rs.getString("basic"));
+		NOtf.setText(rs.getString("mobile"));
+		passtf.setText(rs.getString("pass"));
+		emailtf.setText(rs.getString("email"));
 		if(rs.getString("sex").equals("M")){
     		
 			male.setSelected(true);
@@ -116,7 +129,7 @@ submit.addActionListener(new ActionListener(){
 			String temp;
 //			con.setReadOnly(false);
 			con.close();
-			query="UPDATE employee SET name=?, age = ?,sex= ?,designation= ?,basic = ?,uid = ? " +" WHERE uid = '"+passeduid+"'";//(name,age,sex,designation,basic,uid)
+			query="UPDATE employee SET name=?, age = ?,sex= ?,designation= ?,basic = ?,uid = ? , pass = ? ,email = ?, mobile = ?" +" WHERE uid = '"+passeduid+"'";//(name,age,sex,designation,basic,uid)
 			con=DriverManager.getConnection(url,username,password);
 //			stmt=con.createStatement();//ResultSet.CONCUR_UPDATABLE, ResultSet.TYPE_SCROLL_SENSITIVE
 			PreparedStatement ps=con.prepareStatement(query);
@@ -136,6 +149,10 @@ submit.addActionListener(new ActionListener(){
 			ps.setString(4, designationtf.getText());
 			ps.setString(5, basictf.getText());
 			ps.setString(6, uidtf.getText());
+			ps.setString(7, passtf.getText());
+	    	ps.setString(8, emailtf.getText());
+	    	ps.setString(9, NOtf.getText());
+	    	   
 //			rs.updateRow();
 			if(nametf.getText().equals("") ||  Integer.parseInt(agetf.getText())==0  || designationtf.getText().equals("") || basictf.getText().equals("") || uidtf.getText().equals(""))
 	    		   
@@ -185,6 +202,9 @@ other.setLocation(200, 220);
 designationlabel.setLocation(60,250);
 basiclabel.setLocation(60,280);
 uidlabel.setLocation(60,310);
+Nolabel.setLocation(60,340);
+emaillabel.setLocation(60, 370);
+passlabel.setLocation(60, 400);
 
 
 
@@ -193,11 +213,15 @@ agetf.setBounds(200,150,150, 25);
 designationtf.setBounds(200,250,150,25);
 basictf.setBounds(200,280,150,25);
 
-submit.setBounds(100,400,90,25);
-quit.setBounds(210,400,90,25);
+submit.setBounds(100,435,90,25);
+quit.setBounds(210,435,90,25);
 
 
 uidtf.setBounds(200,310,150,25);
+NOtf.setBounds(200, 340, 150, 25);
+emailtf.setBounds(200, 370, 150, 25);
+passtf.setBounds(200, 400, 150, 25);
+
 
 
 
@@ -212,6 +236,9 @@ other.setSize(150,25);
 designationlabel.setSize(150,25);
 basiclabel.setSize(125, 25);
 uidlabel.setSize(150, 25);
+Nolabel.setSize(150, 25);
+emaillabel.setSize(150, 25);
+passlabel.setSize(150, 25);
 
 
 
@@ -236,6 +263,12 @@ f.add(basictf);
 f.add(submit);          
 f.add(quit);
 
+f.add(NOtf);
+f.add(emailtf);
+f.add(emaillabel);
+f.add(passtf);
+f.add(passlabel);
+f.add(Nolabel);
 f.add(uidlabel);
 f.add(uidtf);
 f.addWindowListener(null);

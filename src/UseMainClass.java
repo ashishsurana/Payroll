@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
-public class MainClass {
+public class UseMainClass {
 	 
 public static void frame(){
 
@@ -16,10 +16,10 @@ public static void frame(){
 		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
 		JLabel headlabel2=new JLabel("Cick on the Options Below:",JLabel.CENTER);
 		JLabel test=new JLabel(" ");
-		JButton addnew = new JButton("Add a Employee");
-		JButton remove = new JButton("Remove a Employee");
+		//JButton addnew = new JButton("Add a Employee");
+		//JButton remove = new JButton("Remove a Employee");
 		JButton update = new JButton("Update a Record");
-		JButton leave = new JButton("No. of Leave Entry");
+		//JButton leave = new JButton("No. of Leave Entry");
 		JButton display = new JButton("Display Details");
 		
 		
@@ -33,18 +33,18 @@ public static void frame(){
 		    }
 		});
 		
-		addnew.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e)
-			{
-				AddNew.frameaddnew();
-			}
-		});
-		remove.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e)
-			{
-			Remove.frameremove();	
-			}
-		});
+//		addnew.addActionListener(new ActionListener(){
+//			public void actionPerformed(ActionEvent e)
+//			{
+//				AddNew.frameaddnew();
+//			}
+//		});
+//		remove.addActionListener(new ActionListener(){
+//			public void actionPerformed(ActionEvent e)
+//			{
+//			Remove.frameremove();	
+//			}
+//		});
 		update.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -52,12 +52,12 @@ public static void frame(){
 			}
 		});
 
-		leave.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e)
-			{
-				AddLeaves.frameleave();
-			}
-		});
+//		leave.addActionListener(new ActionListener(){
+//			public void actionPerformed(ActionEvent e)
+//			{
+//				AddLeaves.frameleave();
+//			}
+//		});
 		display.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -70,14 +70,14 @@ public static void frame(){
 		headlabel2.setSize(300,25);
 		test.setBounds(200, 200, 10, 15);
 
-		addnew.setLocation(100, 120);
-		addnew.setSize(200, 25);
-		remove.setLocation(100, 160);
-		remove.setSize(200,25);
+//		addnew.setLocation(100, 120);
+//		addnew.setSize(200, 25);
+//		remove.setLocation(100, 160);
+//		remove.setSize(200,25);
 		update.setLocation(100, 200);
 		update.setSize(200,25);
-		leave.setLocation(100,240);
-		leave.setSize(200,25);
+//		leave.setLocation(100,240);
+//		leave.setSize(200,25);
 		display.setBounds(100, 280, 200, 25);
 		
 
@@ -85,10 +85,10 @@ public static void frame(){
 		
 		frame.add(headlabel);
 		frame.add(headlabel2);
-		frame.add(addnew);
-		frame.add(remove);
+//		frame.add(addnew);
+//		frame.add(remove);
 		frame.add(update);
-		frame.add(leave);
+//		frame.add(leave);
 		frame.add(quit);
 		frame.add(display);
 		frame.add(test);

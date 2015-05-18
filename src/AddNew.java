@@ -53,6 +53,17 @@ public class AddNew  {
 		JLabel uidlabel=new JLabel("Unique ID :");
 		final JTextField uidtf= new JTextField();
 
+		JLabel Nolabel=new JLabel("Mobile Number  :");
+		final JTextField NOtf= new JTextField();
+
+		JLabel emaillabel=new JLabel("Emails ID :");
+		final JTextField emailtf= new JTextField();
+		
+		JLabel passlabel=new JLabel("User Password :");
+		final JTextField passtf= new JTextField();
+
+
+		
 		JButton submit = new JButton("Submit");
 		JButton quit = new JButton("Cancel");
 		JButton clear = new JButton("Clear");
@@ -65,6 +76,9 @@ public class AddNew  {
 				designationtf.setText("");
 				basictf.setText("");
 				bg.clearSelection();
+				NOtf.setText("");
+				emailtf.setText("");
+				passtf.setText("");
 			}
 		});
 
@@ -98,7 +112,7 @@ public class AddNew  {
 		       //Statement stmt;
 		       PreparedStatement ps;
 //		       ResultSet rs;
-		       String query="INSERT INTO employee  (name,age,sex,designation,basic,uid,leaves) VALUES (upper (?),?,?,upper(?),?,upper(?),?)";
+		       String query="INSERT INTO employee  (name,age,sex,designation,basic,uid,leaves,pass,email,mobile) VALUES (upper (?),?,?,upper(?),?,upper(?),?,?,?,?)";
 		       
 		       String url="jdbc:mysql://localhost:3306/payrolltest";
 		       String username="test3";
@@ -116,6 +130,9 @@ public class AddNew  {
 		    	   ps.setInt(5,basicip);
 		    	   ps.setString(6, uidip);
 		    	   ps.setInt(7, 0);
+		    	   ps.setString(8, passtf.getText());
+		    	   ps.setString(9, emailtf.getText());
+		    	   ps.setString(10, NOtf.getText());
 		    	   if(nameip.equals("") ||  ageip==0 || sexip=="T" || designationip.equals("") || basicip==0 || uidip.equals(""))
 		    		   
 		    	   {
@@ -130,11 +147,15 @@ public class AddNew  {
 						basictf.setText("");
 						uidtf.setText("");
 						bg.clearSelection();
+						NOtf.setText("");
+						emailtf.setText("");
+						passtf.setText("");
 		    	   }
 		    	   }
 		       catch(SQLException e2){
 		    	   e2.getMessage();
-		    	   JOptionPane.showMessageDialog(null, "UID Already Exists");
+		    	   e2.printStackTrace();
+//		    	   JOptionPane.showMessageDialog(null, "UID Already Exists");
 		       }
 //		       finally{
 //		    	   con.close();
@@ -164,21 +185,24 @@ public class AddNew  {
 		designationlabel.setLocation(60,250);
 		basiclabel.setLocation(60,280);
 		uidlabel.setLocation(60,310);
-
-
-
+		Nolabel.setLocation(60,340);
+		emaillabel.setLocation(60, 370);
+		passlabel.setLocation(60, 400);
+		
 		nametf.setBounds(200,120,150, 25);
 		agetf.setBounds(200,150,150, 25);
 		designationtf.setBounds(200,250,150,25);
 		basictf.setBounds(200,280,150,25);
+		
 
-		submit.setBounds(40,400,100,25);
-		quit.setBounds(150,400,100,25);
-		clear.setBounds(260,400,100,25);
+		submit.setBounds(40,435,100,25);
+		quit.setBounds(150,435,100,25);
+		clear.setBounds(260,435,100,25);
 
 		uidtf.setBounds(200,310,150,25);
-
-
+		NOtf.setBounds(200, 340, 150, 25);
+		emailtf.setBounds(200, 370, 150, 25);
+		passtf.setBounds(200, 400, 150, 25);
 
 		headlabel.setSize(300,25);
 		headlabel2.setSize(300,25);
@@ -191,7 +215,9 @@ public class AddNew  {
 		designationlabel.setSize(150,25);
 		basiclabel.setSize(125, 25);
 		uidlabel.setSize(150, 25);
-
+		Nolabel.setSize(150, 25);
+		emaillabel.setSize(150, 25);
+		passlabel.setSize(150, 25);
 
 
 
@@ -217,6 +243,13 @@ public class AddNew  {
 		f.add(clear);
 		f.add(uidlabel);
 		f.add(uidtf);
+		f.add(Nolabel);
+		f.add(NOtf);
+		f.add(emailtf);
+		f.add(emaillabel);
+		f.add(passtf);
+		f.add(passlabel);
+		
 		f.addWindowListener(null);
 
 		f.setSize(400,500);//400 width and 500 height  

@@ -24,6 +24,9 @@ public class Display  {
 
 	final JFrame f=new JFrame();//creating instance of JFrame  
 	String uidin=JOptionPane.showInputDialog("Enter uid");
+	if(uidin.equals("")){
+		f.dispose();
+	}
 	query="select * from employee where uid =  '"+ uidin +"' ";
 	
 
@@ -47,6 +50,13 @@ public class Display  {
 
 	JLabel uidlabel=new JLabel("Unique ID :");
 	JTextField uidtf= new JTextField();
+	
+	JLabel Nolabel=new JLabel("Mobile Number  :");
+	final JTextField NOtf= new JTextField();
+
+	JLabel emaillabel=new JLabel("Emails ID :");
+	final JTextField emailtf= new JTextField();
+	
 
 	JButton quit = new JButton("ok");
 
@@ -66,6 +76,8 @@ public class Display  {
 			agetf.setText(rs.getString("age"));
 			designationtf.setText(rs.getString("designation"));
 			uidtf.setText(rs.getString("uid"));
+			NOtf.setText(rs.getString("mobile"));
+			emailtf.setText(rs.getString("email"));
 			basictf.setText(rs.getString("basic")+".00 /-");
 			if(rs.getString("sex").equals("M")){
 	    		
@@ -107,6 +119,8 @@ public class Display  {
 	designationlabel.setLocation(60,210);
 	basiclabel.setLocation(60,240);
 	uidlabel.setLocation(60,270);
+	emaillabel.setLocation(60,300);
+	Nolabel.setLocation(60, 330);
 
 
 
@@ -117,7 +131,8 @@ public class Display  {
 	designationtf.setBounds(200,210,150,25);
 	basictf.setBounds(200,240,150,25);
 	uidtf.setBounds(200,270,150,25);
-
+	emailtf.setBounds(200, 300, 150, 25);
+	NOtf.setBounds(200, 330, 150, 25);
 
 
 	quit.setBounds(150,400,100,25);
@@ -134,6 +149,9 @@ public class Display  {
 	designationlabel.setSize(150,25);
 	basiclabel.setSize(125, 25);
 	uidlabel.setSize(150, 25);
+//	Dimension d=();
+	emaillabel.setSize(150,25);
+	Nolabel.setSize(150,25);
 
 
 
@@ -153,6 +171,11 @@ public class Display  {
 	f.add(designationtf);
 	f.add(basiclabel);
 	f.add(basictf);
+
+	f.add(Nolabel);
+	f.add(NOtf);
+	f.add(emailtf);
+	f.add(emaillabel);
 	         
 	f.add(quit);
 
