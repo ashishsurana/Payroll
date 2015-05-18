@@ -23,6 +23,7 @@ public class Update  {
 	static String url="jdbc:mysql://localhost:3306/payrolltest";
 	static String username="test3";
 	static String password="pwd";
+	
 	public static void frameupdate(){//String passeduid
 		final String passeduid=JOptionPane.showInputDialog("Enter uid for updation");
 		
@@ -71,7 +72,7 @@ JButton quit = new JButton("Quit");
 
 try{
 	con=DriverManager.getConnection(url,username,password);
-	stmt=con.createStatement( ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+	stmt=con.createStatement();
 	rs=stmt.executeQuery(query);
 	while(rs.next())
 	{
@@ -117,7 +118,7 @@ submit.addActionListener(new ActionListener(){
 			con.close();
 			query="UPDATE employee SET name=?, age = ?,sex= ?,designation= ?,basic = ?,uid = ? " +" WHERE uid = '"+passeduid+"'";//(name,age,sex,designation,basic,uid)
 			con=DriverManager.getConnection(url,username,password);
-			stmt=con.createStatement();//ResultSet.CONCUR_UPDATABLE, ResultSet.TYPE_SCROLL_SENSITIVE
+//			stmt=con.createStatement();//ResultSet.CONCUR_UPDATABLE, ResultSet.TYPE_SCROLL_SENSITIVE
 			PreparedStatement ps=con.prepareStatement(query);
 			ps.setString(1, nametf.getText());
 			ps.setInt(2, Integer.parseInt(agetf.getText()));
