@@ -12,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-
-import java.sql.Statement;
 public class AddNew  {  
 	 static String nameip;
 	 static int ageip=0;
@@ -97,10 +95,10 @@ public class AddNew  {
 		    	}
 		    	//Database Connectivity
 		       Connection con;
-		       Statement stmt;
+		       //Statement stmt;
 		       PreparedStatement ps;
 //		       ResultSet rs;
-		       String query="INSERT INTO employee  (name,age,sex,designation,basic,uid) VALUES (upper (?),?,?,upper(?),?,upper(?))";
+		       String query="INSERT INTO employee  (name,age,sex,designation,basic,uid,leaves) VALUES (upper (?),?,?,upper(?),?,upper(?),?)";
 		       
 		       String url="jdbc:mysql://localhost:3306/payrolltest";
 		       String username="test3";
@@ -117,6 +115,7 @@ public class AddNew  {
 		    	   ps.setString(4, designationip);
 		    	   ps.setInt(5,basicip);
 		    	   ps.setString(6, uidip);
+		    	   ps.setInt(7, 0);
 		    	   if(nameip.equals("") ||  ageip==0 || sexip=="T" || designationip.equals("") || basicip==0 || uidip.equals(""))
 		    		   
 		    	   {
@@ -125,11 +124,17 @@ public class AddNew  {
 		    	   else{
 		    		   ps.executeUpdate();
 			    	   JOptionPane.showMessageDialog(null, "Response Submitted Successfully");
-			    	  
+			    	   nametf.setText("");
+						agetf.setText("");
+						designationtf.setText("");
+						basictf.setText("");
+						uidtf.setText("");
+						bg.clearSelection();
 		    	   }
 		    	   }
 		       catch(SQLException e2){
-		    	   System.err.println(e2.getMessage());
+		    	   e2.getMessage();
+		    	   JOptionPane.showMessageDialog(null, "UID Already Exists");
 		       }
 //		       finally{
 //		    	   con.close();

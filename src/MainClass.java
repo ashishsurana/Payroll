@@ -4,8 +4,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.sql.Connection;
-import java.sql.Statement;
 
 
 public class MainClass {

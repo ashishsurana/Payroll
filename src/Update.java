@@ -95,7 +95,8 @@ try{
 	
 }
 catch(SQLException e2){
-	System.out.println(e2.getMessage());
+//	System.out.println(e2.getMessage());
+	e2.printStackTrace();
 }
 
 submit.addActionListener(new ActionListener(){

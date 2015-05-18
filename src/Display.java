@@ -56,12 +56,17 @@ public class Display  {
 		rs=stmt.executeQuery(query);
 		while(rs.next())
 		{
-
+//			if(rs.getString("name").equals(null))
+//			{
+//				nametf.setText("ffF");//rs.getString("name")
+//				JOptionPane.showMessageDialog(null,"Record Not Found");
+//			}
+			
 			nametf.setText(rs.getString("name"));
 			agetf.setText(rs.getString("age"));
 			designationtf.setText(rs.getString("designation"));
 			uidtf.setText(rs.getString("uid"));
-			basictf.setText(rs.getString("basic"));
+			basictf.setText(rs.getString("basic")+".00 /-");
 			if(rs.getString("sex").equals("M")){
 	    		
 				sextf.setText("Male");
@@ -76,7 +81,8 @@ public class Display  {
 		
 	}
 	catch(SQLException e2){
-		System.out.println(e2.getMessage());
+		JOptionPane.showMessageDialog(null,e2.getMessage());
+		e2.printStackTrace();
 	}
 	
 	

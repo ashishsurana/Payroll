@@ -3,10 +3,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,7 +38,7 @@ public class Remove {
 		    public void actionPerformed(ActionEvent e)
 		    {
 		      Connection con;
-		      Statement stm;
+		      //Statement stm;
 		      PreparedStatement ps;
 		      String query="delete from employee where uid = ? ";//'"+uidip+"'
 		      
