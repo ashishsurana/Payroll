@@ -194,7 +194,7 @@ public class Display  {
 	f.setSize(400,500);//400 width and 500 height  
 	f.setLayout(null);//using no layout managers  
 	f.setVisible(true);//making the frame visible  
-
+	uidin="...";
 	f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		}
 public static void main(String[] args) {  

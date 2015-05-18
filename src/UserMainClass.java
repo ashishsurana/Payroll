@@ -36,7 +36,7 @@ public static void frame(final String uid){
 		calculate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				AddNew.frameaddnew();
+				CalculatePayroll.frame(uid);
 			}
 		});
 //		remove.addActionListener(new ActionListener(){
@@ -45,12 +45,12 @@ public static void frame(final String uid){
 //			Remove.frameremove();	
 //			}
 //		});
-		update.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e)
-			{
-				Update.frameupdate();
-			}
-		});
+//		update.addActionListener(new ActionListener(){
+//			public void actionPerformed(ActionEvent e)
+//			{
+//				Update.frameupdate();
+//			}
+//		});
 
 //		leave.addActionListener(new ActionListener(){
 //			public void actionPerformed(ActionEvent e)

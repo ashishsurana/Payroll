@@ -26,12 +26,12 @@ public class AddLeaves {
 			
 
 		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
-		JLabel headlabel2=new JLabel("Enter the Leaves for a Employee",JLabel.CENTER);
+		JLabel headlabel2=new JLabel("Enter the No. Of Working Days",JLabel.CENTER);
 		
 		JLabel uidlabel=new JLabel("Enter the UID :");
 		final JTextField uidtf = new JTextField();
 		
-		JLabel leaves=new JLabel("Enter the no. of leaves");
+		JLabel leaves=new JLabel("No. of Working Days");
 		final JTextField leavestf = new JTextField();
 		
 		JButton insert = new JButton("Insert");		
