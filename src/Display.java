@@ -19,14 +19,22 @@ public class Display  {
 	static String username="test3";
 	static String password="pwd";
 	static String query;
-	
-	public static void framedisplay(){
-
-	final JFrame f=new JFrame();//creating instance of JFrame  
-	String uidin=JOptionPane.showInputDialog("Enter uid");
-	if(uidin.equals("")){
-		f.dispose();
+	static String uidin="...";
+	public static void setuid(String uid){
+		uidin=uid;
 	}
+	public static void framedisplay(){
+	
+	final JFrame f=new JFrame();//creating instance of JFrame  
+	if(uidin.equals("..."))
+		{
+
+		uidin=JOptionPane.showInputDialog("Enter uid");
+		if(uidin.equals("")){
+			f.dispose();
+		}
+
+		}
 	query="select * from employee where uid =  '"+ uidin +"' ";
 	
 

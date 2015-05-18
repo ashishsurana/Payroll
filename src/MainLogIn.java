@@ -24,6 +24,13 @@ public class MainLogIn {
 		JButton quit = new JButton("Cancel");
 		JLabel test=new JLabel(" ");
 
+		user.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e)
+		    {
+		    	UserLogIn.loginframe();
+		    }
+		});
+		
 		admin.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e)
 		    {

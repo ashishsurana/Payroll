@@ -73,7 +73,7 @@ public class UserLogIn {
 						if(uidinput.equals(rs.getString(6)))	
 						{
 							if(passwordinput.equals(rs.getString(8))){
-								MainClass.frame();
+								UserMainClass.frame(uidinput);
 							}
 							else
 							{
