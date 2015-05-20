@@ -18,7 +18,7 @@ public static void frame(final String uid){
 		JLabel test=new JLabel(" ");
 		JButton calculate = new JButton("Calculate PayRoll");
 		//JButton remove = new JButton("Remove a Employee");
-		JButton update = new JButton("Update your Details");
+//		JButton update = new JButton("Update your Details");
 		//JButton leave = new JButton("No. of Leave Entry");
 		JButton display = new JButton("Display Details");
 		
@@ -71,15 +71,15 @@ public static void frame(final String uid){
 		headlabel2.setSize(300,25);
 		test.setBounds(200, 200, 10, 15);
 
-		calculate.setLocation(100, 120);
+		calculate.setLocation(100, 150);
 		calculate.setSize(200, 25);
 //		remove.setLocation(100, 160);
 //		remove.setSize(200,25);
-		update.setLocation(100, 200);
-		update.setSize(200,25);
+//		update.setLocation(100, 200);
+//		update.setSize(200,25);
 //		leave.setLocation(100,240);
 //		leave.setSize(200,25);
-		display.setBounds(100, 280, 200, 25);
+		display.setBounds(100, 200, 200, 25);
 		
 
 		quit.setBounds(150,400,100,25);
@@ -88,7 +88,7 @@ public static void frame(final String uid){
 		frame.add(headlabel2);
 		frame.add(calculate);
 //		frame.add(remove);
-		frame.add(update);
+//		frame.add(update);
 //		frame.add(leave);
 		frame.add(quit);
 		frame.add(display);

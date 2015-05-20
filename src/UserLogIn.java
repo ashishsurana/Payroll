@@ -30,7 +30,7 @@ public class UserLogIn {
 			
 
 		JLabel headlabel=new JLabel("Payroll Management System",JLabel.CENTER);
-		JLabel headlabel2=new JLabel("Welcome Admin to Admin Panel",JLabel.CENTER);
+		JLabel headlabel2=new JLabel("Welcome to User Panel",JLabel.CENTER);
 		
 		JLabel uidlabel=new JLabel("Employee UID :");
 		final JTextField uidtf = new JTextField();
@@ -58,43 +58,58 @@ public class UserLogIn {
 			    String user = "test3";
 			    String passwd = "pwd";
 			    
+			    Boolean flag=true;
 			    
 				//Database Connection Block
 				try{
 					con=DriverManager.getConnection(url, user, passwd);
 					stmt=con.createStatement();
 					rs=stmt.executeQuery(query);
-					if(rs.next()){
+					while(rs.next()){
 //						uidinput=rs.getString(1);
 //						passwordinput=rs.getString(2);
 //						JOptionPane.showMessageDialog(null, passwordinput);
 						passwordinput = new String(passwordtf.getPassword());
 						uidinput=new String(uidtf.getText());
+//						JOptionPane.showMessageDialog(null, rs.getString(6));
+						
 						if(uidinput.equals(rs.getString(6)))	
 						{
 							if(passwordinput.equals(rs.getString(8))){
 								UserMainClass.frame(uidinput);
+								break;
 							}
+							
+							
 							else
 							{
-								JOptionPane.showMessageDialog(null, "Invalid id/password");
-								passwordtf.setText("");
-								uidtf.setText("");
+//								JOptionPane.showMessageDialog(null, "Invalid id/password");
+//								passwordtf.setText("");
+//								uidtf.setText("");
+								flag=false;
 								
 							}
 						}
-						else
-						{
-							JOptionPane.showMessageDialog(null, "Incorrect id/password");
-						}
+//						else
+//						{
+//							JOptionPane.showMessageDialog(null, "Invalid id/password");
+//						}
+							
+							
 					}
-					else{
-						JOptionPane.showInputDialog("InCorret");
-					}
+//					else{
+//						JOptionPane.showInputDialog("InCorret");
+//					}
 					
 				}
+				
 				catch(SQLException e2){
 					System.err.println(e2.getMessage());
+				}
+				if(flag==false){
+//					else{
+						JOptionPane.showInputDialog("InCorret");
+//					}
 				}
 		    }
 		});
