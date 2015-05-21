@@ -52,7 +52,7 @@ public class MainLogIn {
 		admin.setLocation(100, 250);
 		admin.setSize(200,25);
 		user.setBounds(100,200,200,25);
-		test.setBounds(50, 150, 50, 25);
+		test.setBounds(200, 150, 50, 25);
 		
 
 		quit.setBounds(150,400,100,25);

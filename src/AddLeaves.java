@@ -62,7 +62,7 @@ public class AddLeaves {
 		    		con=DriverManager.getConnection(url,username,password);
 		    		ps=con.prepareStatement(query);
 		    		ps.setInt(1,Integer.parseInt(leavestf.getText()));
-		    		if(Integer.parseInt(leavestf.getText())>= 30)
+		    		if(Integer.parseInt(leavestf.getText())>= 32)
 			    		   
 			    	   {
 			    		   JOptionPane.showMessageDialog(null,"Improper Values");

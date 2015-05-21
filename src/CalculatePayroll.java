@@ -77,7 +77,7 @@ public class CalculatePayroll {
 			rs=stm.executeQuery(query);
 			while(rs.next()){
 				int t=rs.getInt("basic");
-				t=t/rs.getInt("leaves");
+				t=(t/30) * rs.getInt("leaves");
 				wd.setText("     " + rs.getInt("leaves"));
 				basic.setText("    "+t);
 				ma.setText(" + " + ((t*0.1)));
@@ -85,7 +85,7 @@ public class CalculatePayroll {
 				hra.setText(" + " + ((t*0.1)));
 				pf.setText(" -  " + ((t*0.1)));
 				tax.setText("    " + ((t*0.05)));
-				gross.setText("  gr " + (t+(t*0.15)) );
+				gross.setText("   " + (t+(t*0.15)) );
 			}
 
 			//			JOptionPane.showMessageDialog(null, t);

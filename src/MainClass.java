@@ -19,7 +19,7 @@ public static void frame(){
 		JButton addnew = new JButton("Add a Employee");
 		JButton remove = new JButton("Remove a Employee");
 		JButton update = new JButton("Update a Record");
-		JButton leave = new JButton("No. of Leave Entry");
+		JButton leave = new JButton("Working Days Entry");
 		JButton display = new JButton("Display Details");
 		
 		

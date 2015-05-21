@@ -116,14 +116,6 @@ catch(SQLException e2){
 submit.addActionListener(new ActionListener(){
 	public void actionPerformed(ActionEvent e)
 	{
-//		Connection con;
-//		Statement stmt;
-//		ResultSet  rs;
-//		String query="selecyt * from employee where uid = " + passeduid;
-//		
-//		String url="jdbc:mysql//localhost:3306/payrolltest";
-//		String username="test3";
-//		String password="pwd";
 		
 		try{
 			String temp;
@@ -161,7 +153,7 @@ submit.addActionListener(new ActionListener(){
 	    	    }
 	    	   else{
 	    		   ps.executeUpdate();
-		    	   JOptionPane.showMessageDialog(null, "Response Submitted Successfully");
+		    	   JOptionPane.showMessageDialog(null, "Response Edited Successfully");
 		    	  
 	    	   }
 			

@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -65,21 +66,18 @@ public class Display  {
 	JLabel emaillabel=new JLabel("Emails ID :");
 	final JTextField emailtf= new JTextField();
 	
-
+	Boolean flag=true;
 	JButton quit = new JButton("ok");
 
 	try{
 		con=DriverManager.getConnection(url,username,password);
 		stmt=con.createStatement( ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 		rs=stmt.executeQuery(query);
+		
 		while(rs.next())
 		{
-//			if(rs.getString("name").equals(null))
-//			{
-//				nametf.setText("ffF");//rs.getString("name")
-//				JOptionPane.showMessageDialog(null,"Record Not Found");
-//			}
 			
+			flag=false;
 			nametf.setText(rs.getString("name"));
 			agetf.setText(rs.getString("age"));
 			designationtf.setText(rs.getString("designation"));
@@ -103,6 +101,11 @@ public class Display  {
 	catch(SQLException e2){
 		JOptionPane.showMessageDialog(null,e2.getMessage());
 		e2.printStackTrace();
+	}
+	
+	if(flag==true){
+		JOptionPane.showMessageDialog(null, "Not Found");
+		
 	}
 	
 	
